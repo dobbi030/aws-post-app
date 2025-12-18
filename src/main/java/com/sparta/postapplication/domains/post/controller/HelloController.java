@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,7 @@ public class HelloController {
 	}
 
 	@PostMapping
-	ResponseEntity<Post> create(CreatePostRequest request) {
+	ResponseEntity<Post> create(@RequestBody CreatePostRequest request) {
 		log.info("request - 1: {}", request);
 		Post post = helloService.create(request);
 
