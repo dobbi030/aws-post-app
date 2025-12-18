@@ -13,10 +13,12 @@ import com.sparta.postapplication.domains.post.service.dto.CreatePostRequest;
 import com.sparta.postapplication.domains.post.service.dto.GetPostResponse;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/hello")
 @RequiredArgsConstructor
+@Slf4j
 public class HelloController {
 
 	public final HelloService helloService;
@@ -28,6 +30,7 @@ public class HelloController {
 
 	@PostMapping
 	ResponseEntity<Post> create(CreatePostRequest request) {
+		log.info("request - 1: {}", request);
 		Post post = helloService.create(request);
 
 		return ResponseEntity.ok(post);

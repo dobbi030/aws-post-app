@@ -9,16 +9,19 @@ import com.sparta.postapplication.domains.post.service.dto.CreatePostRequest;
 import com.sparta.postapplication.domains.post.service.dto.GetPostResponse;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class HelloService {
 
 	private final HelloRepository helloRepository;
 
 	@Transactional
 	public Post create(CreatePostRequest request) {
+		log.info("request - 2: {}", request);
 		Post post = Post.create(request.title(), request.content());
 
 		return helloRepository.save(post);
