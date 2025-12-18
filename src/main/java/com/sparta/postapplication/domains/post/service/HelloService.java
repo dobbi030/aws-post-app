@@ -15,10 +15,10 @@ public class HelloService {
 
 	private final HelloRepository helloRepository;
 
-	public void create(CreatePostRequest request) {
+	public Post create(CreatePostRequest request) {
 		Post post = Post.create(request.title(), request.content());
 
-		helloRepository.save(post);
+		return helloRepository.save(post);
 	}
 
 	public GetPostResponse getPost(Long postId) {

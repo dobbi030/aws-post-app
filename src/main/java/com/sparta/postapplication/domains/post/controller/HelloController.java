@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sparta.postapplication.domains.post.domain.model.Post;
 import com.sparta.postapplication.domains.post.service.HelloService;
 import com.sparta.postapplication.domains.post.service.dto.CreatePostRequest;
 import com.sparta.postapplication.domains.post.service.dto.GetPostResponse;
@@ -26,10 +27,10 @@ public class HelloController {
 	}
 
 	@PostMapping
-	ResponseEntity<Void> create(CreatePostRequest request) {
-		helloService.create(request);
+	ResponseEntity<Post> create(CreatePostRequest request) {
+		Post post = helloService.create(request);
 
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok(post);
 	}
 
 	@GetMapping("/{postId}")
