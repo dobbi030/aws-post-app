@@ -1,6 +1,7 @@
 package com.sparta.postapplication.domains.post.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sparta.postapplication.domains.post.domain.model.Post;
 import com.sparta.postapplication.domains.post.domain.repository.HelloRepository;
@@ -11,10 +12,12 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class HelloService {
 
 	private final HelloRepository helloRepository;
 
+	@Transactional
 	public Post create(CreatePostRequest request) {
 		Post post = Post.create(request.title(), request.content());
 
