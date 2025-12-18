@@ -1,6 +1,9 @@
 spring:
   application:
     name: post-application
+  config:
+    import:
+      optional: .env[properties]
 
   datasource:
     url: ${DB_URL}
